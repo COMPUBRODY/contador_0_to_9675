@@ -95,14 +95,16 @@ always@(posedge CLOCK_50 or negedge KEY[0])
 			 Cont	<=	0;
         else
 			 Cont	<=	Cont+1;
+			 
     end
 	 
+
 	 
-assign enable = (SW[1] && !KEY[3])? 1 : 0;		// DEBOUNCING 
+assign enable = (SW[1])? 1 : 0;		// DEBOUNCING 
 
 // ASSIGNING THE COUNTERS CONTROLLER
 counters_controller			u0	(	.clk		(Cont[15:14]), 
-											.rst		(reset), 
+											.rst		(SW[0]), 
 											.ena		(enable),
 											.Qdata	(display_nums[15:0]),
 											.blink	(LEDR[3:0])
@@ -110,9 +112,9 @@ counters_controller			u0	(	.clk		(Cont[15:14]),
 
 	);
 
-assign reset = (SW[0] || (LEDR == 4'b1111))? 1 : 0 ; 	//cuando los 4 leds esten encendidos al mismo tiempo aplica un reset, o con el switch 0
+//assign reset = (SW[0] || (LEDR == 4'b1111) )? 1 : 0 ; 	//cuando los 4 leds esten encendidos al mismo tiempo aplica un reset, o con el switch 0
 	
-	 
+	 /* || (LEDR == 4'b1111) */
 // ASSIGNING THE DISPLAYS CONTROLLER 
 displays_controller			u2	(	//SALIDAS
 											.seg0(HEX0),
