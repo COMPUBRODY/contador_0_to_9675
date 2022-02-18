@@ -1,31 +1,5 @@
-// ============================================================================
-// Copyright (c) 2013 by Terasic Technologies Inc.
-// ============================================================================
-//
-// Permission:
-//
-//   Terasic grants permission to use and modify this code for use
-//   in synthesis for all Terasic Development Boards and Altera Development 
-//   Kits made by Terasic.  Other use of this code, including the selling 
-//   ,duplication, or modification of any portion is strictly prohibited.
-//
-// Disclaimer:
-//
-//   This VHDL/Verilog or C/C++ source code is intended as a design reference
-//   which illustrates how these types of functions can be implemented.
-//   It is the user's responsibility to verify their design for
-//   consistency and functionality through the use of formal
-//   verification methods.  Terasic provides no warranty regarding the use 
-//   or functionality of this code.
-//
-// ============================================================================
-//           
-//  Terasic Technologies Inc
-//  9F., No.176, Sec.2, Gongdao 5th Rd, East Dist, Hsinchu City, 30070. Taiwan
-//  
-//  
-//                     web: http://www.terasic.com/  
-//                     email: support@terasic.com
+
+//                     email: fernando.madera@cinvestav.mx
 //
 // ============================================================================
 //								Thu Feb 11 11:26:45 2022
@@ -36,13 +10,13 @@
 
 `define ENABLE_CLOCK
 `define ENABLE_HEX
-`define ENABLE_KEY
+//`define ENABLE_KEY
 `define ENABLE_LEDR
 `define ENABLE_SW
+//`define ENABLE_CORRIMIENTO
 
-/*
-module DE1_SOC_golden_top(
-*/
+
+
 module contador_0_to_9675(
 
       /* Enables CLOCK */
@@ -84,11 +58,13 @@ reg  [31:0]	Cont;
 wire [15:0]	display_nums;
 wire reset;
 wire enable;
+wire clock;
 
 
 //=======================================================
 //  Structural coding
 //=======================================================
+/*
 always@(posedge CLOCK_50 or negedge KEY[0])
     begin
         if(!KEY[0])
@@ -97,13 +73,21 @@ always@(posedge CLOCK_50 or negedge KEY[0])
 			 Cont	<=	Cont+1;
 			 
     end
-	 
+*/	 
 
 	 
 assign enable = (SW[1])? 1 : 0;		// DEBOUNCING 
 
+//ASSIGNING THE CLOCK_DIVIDER 
+clock_divider					u0 (		.fast_clock (CLOCK_50),
+											.rst			(SW[2]),
+											.slow_clock	(clock)
+											
+	);
+
+
 // ASSIGNING THE COUNTERS CONTROLLER
-counters_controller			u0	(	.clk		(Cont[15:14]), 
+counters_controller			u1	(			.clk		(clock), 
 											.rst		(SW[0]), 
 											.ena		(enable),
 											.Qdata	(display_nums[15:0]),
@@ -112,9 +96,7 @@ counters_controller			u0	(	.clk		(Cont[15:14]),
 
 	);
 
-//assign reset = (SW[0] || (LEDR == 4'b1111) )? 1 : 0 ; 	//cuando los 4 leds esten encendidos al mismo tiempo aplica un reset, o con el switch 0
-	
-	 /* || (LEDR == 4'b1111) */
+
 // ASSIGNING THE DISPLAYS CONTROLLER 
 displays_controller			u2	(	//SALIDAS
 											.seg0(HEX0),
@@ -129,9 +111,11 @@ endmodule
 
 
 //// ASSIGNING THE SHIFT REGISTER
+//`ifdef ENABLE_CORRIMIENTO
 //corrimiento_9bits				u1 (	.clk		(Cont[23:22]),
 //											.rst		(SW[0]),
 //											.enable	(SW[1]),
 //											.dir		(SW[2]),
 //											.in		(Cont[23:22]),
 //											.Out		(LEDR)	);
+//`endif

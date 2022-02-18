@@ -18,7 +18,7 @@ module clock_divider(
 		if(count == COUNTER_MAX_COUNT)
 			count <= 0;
 		else
-			coount <= count +1'b1;
+			count <= count +1'b1;
 	end
 	
 	assign slow_clock = count[COUNTER_SIZE-1];
