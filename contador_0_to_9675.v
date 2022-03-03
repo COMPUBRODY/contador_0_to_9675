@@ -18,7 +18,6 @@
 
 
 module contador_0_to_9675(
-
       /* Enables CLOCK */
 	`ifdef ENABLE_CLOCK
       input              CLOCK_50,
@@ -46,14 +45,10 @@ module contador_0_to_9675(
 	`ifdef ENABLE_SW
       input       [9:0]  SW
 	`endif
-
 );
-
-
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
-
 reg  [31:0]	Cont;
 wire [15:0]	display_nums;
 wire reset;

@@ -1,3 +1,7 @@
+`timescale 1ns / 10ps
+//`define size_counter 5
+
+
 module clock_divider(
 	input fast_clock,
 	input rst,
@@ -5,7 +9,8 @@ module clock_divider(
 
 );
 
-	parameter COUNTER_SIZE = 22;
+	
+	parameter COUNTER_SIZE = 10;
 	parameter COUNTER_MAX_COUNT = (2 ** COUNTER_SIZE) - 1;
 	
 	reg [COUNTER_SIZE-1:0] count;
@@ -19,6 +24,7 @@ module clock_divider(
 			count <= 0;
 		else
 			count <= count +1'b1;
+			count <= 0;
 	end
 	
 	assign slow_clock = count[COUNTER_SIZE-1];
