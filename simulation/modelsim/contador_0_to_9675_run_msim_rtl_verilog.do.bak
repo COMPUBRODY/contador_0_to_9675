@@ -1,0 +1,14 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675 {C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675/contador_0_to_9675.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675 {C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675/display_7seg.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675 {C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675/displays_controller.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675 {C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675/corrimiento_9bits.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675 {C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675/counter.v}
+vlog -vlog01compat -work work +incdir+C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675 {C:/Users/Madera/Documents/Quartus_Workspace/contador_0_to_9675/counters_controller.v}
+

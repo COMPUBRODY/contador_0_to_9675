@@ -1,0 +1,106 @@
+|counters_controller
+clk => clk.IN4
+reset => reset.IN4
+ena => ena.IN4
+Qdata[0] << counter:u0.Qdata
+Qdata[1] << counter:u0.Qdata
+Qdata[2] << counter:u0.Qdata
+Qdata[3] << counter:u0.Qdata
+Qdata[4] << counter:u1.Qdata
+Qdata[5] << counter:u1.Qdata
+Qdata[6] << counter:u1.Qdata
+Qdata[7] << counter:u1.Qdata
+Qdata[8] << counter:u2.Qdata
+Qdata[9] << counter:u2.Qdata
+Qdata[10] << counter:u2.Qdata
+Qdata[11] << counter:u2.Qdata
+Qdata[12] << counter:u3.Qdata
+Qdata[13] << counter:u3.Qdata
+Qdata[14] << counter:u3.Qdata
+Qdata[15] << counter:u3.Qdata
+blink[0] << Equal0.DB_MAX_OUTPUT_PORT_TYPE
+blink[1] << Equal1.DB_MAX_OUTPUT_PORT_TYPE
+blink[2] << Equal2.DB_MAX_OUTPUT_PORT_TYPE
+blink[3] << Equal3.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counters_controller|counter:u0
+clk => Qdata[0]~reg0.CLK
+clk => Qdata[1]~reg0.CLK
+clk => Qdata[2]~reg0.CLK
+clk => Qdata[3]~reg0.CLK
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+ena => always0.IN1
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+Qdata[0] <= Qdata[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[1] <= Qdata[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[2] <= Qdata[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[3] <= Qdata[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counters_controller|counter:u1
+clk => Qdata[0]~reg0.CLK
+clk => Qdata[1]~reg0.CLK
+clk => Qdata[2]~reg0.CLK
+clk => Qdata[3]~reg0.CLK
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+ena => always0.IN1
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+Qdata[0] <= Qdata[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[1] <= Qdata[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[2] <= Qdata[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[3] <= Qdata[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counters_controller|counter:u2
+clk => Qdata[0]~reg0.CLK
+clk => Qdata[1]~reg0.CLK
+clk => Qdata[2]~reg0.CLK
+clk => Qdata[3]~reg0.CLK
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+ena => always0.IN1
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+Qdata[0] <= Qdata[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[1] <= Qdata[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[2] <= Qdata[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[3] <= Qdata[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counters_controller|counter:u3
+clk => Qdata[0]~reg0.CLK
+clk => Qdata[1]~reg0.CLK
+clk => Qdata[2]~reg0.CLK
+clk => Qdata[3]~reg0.CLK
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+rst => Qdata.OUTPUTSELECT
+ena => always0.IN1
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+ena => Qdata.OUTPUTSELECT
+Qdata[0] <= Qdata[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[1] <= Qdata[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[2] <= Qdata[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Qdata[3] <= Qdata[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
